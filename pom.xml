@@ -19,17 +19,7 @@
 
 	<!-- Dependent Modules -->
 	<dependencies>
-		<dependency>
-			<groupId>org.javadelight</groupId>
-			<artifactId>delight-async</artifactId>
-			<version>0.0.9</version>
-		</dependency>
-
-		<dependency>
-			<artifactId>delight-concurrency</artifactId>
-			<groupId>org.javadelight</groupId>
-			<version>0.0.5</version>
-		</dependency>
+		
 
 		<!-- only for gwt maven plugin!!! -->
 		<dependency>
@@ -292,16 +282,7 @@
 		</extensions>
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<id>appjangle-releases</id>
-			<url>${repos.appjangle-releases}</url>
-		</repository>
-		<snapshotRepository>
-			<id>appjangle-snapshots</id>
-			<url>${repos.appjangle-snapshots}</url>
-		</snapshotRepository>
-	</distributionManagement>
+	
 
 	<repositories>
 		<repository>
@@ -326,11 +307,6 @@
 		</developer>
 	</developers>
 
-	<scm>
-		<connection>scm:git:git@github.com:mxro/service-api.git</connection>
-		<url>https://github.com/mxro/service-api</url>
-		<developerConnection>scm:git:git@github.com:mxro/service-api.git
-		</developerConnection>
-	</scm>
+	
 
 </project>
