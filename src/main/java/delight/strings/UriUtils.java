@@ -7,6 +7,17 @@ public class UriUtils {
 
     /**
      * <p>
+     * Determines the domain of a URI.
+     * 
+     * @param uri
+     * @return
+     */
+    public static String getDomain(final String uri) {
+        return getPathComponents(uri)[0];
+    }
+
+    /**
+     * <p>
      * From a path such as http://me.com/folder/node
      * <p>
      * Return ["me.com", "folder", "node"]
