@@ -147,4 +147,19 @@ public class UriUtils {
         return s.substring(0, lastSeparatorIndex + 1) + filename.substring(0, extensionIndex);
     }
 
+    /**
+     * Returns the extension of a given filename (excluding the .). If there is
+     * no extension defined, this function returns "".
+     * 
+     * @param path
+     * @return
+     */
+    public static String getExtension(final String path) {
+        final int dotPos = path.lastIndexOf(".");
+        if (dotPos > 0) {
+            return path.substring(dotPos + 1);
+        }
+        return "";
+    }
+
 }
