@@ -117,4 +117,34 @@ public class UriUtils {
 
     }
 
+    /**
+     * from http://stackoverflow.com/questions/941272/how-do-i-trim-a-file-
+     * extension-from-a-string-in-java
+     * 
+     * @param s
+     * @return
+     */
+    public static String removeExtension(final String s) {
+        final String works = s + "";
+        final String separator = "/"; // System.getProperty("file.separator");
+    
+        final String filename;
+    
+        // Remove the path up to the filename.
+        final int lastSeparatorIndex = works.replaceAll("\\\\", "/").lastIndexOf(separator);
+        if (lastSeparatorIndex == -1) {
+            filename = s;
+        } else {
+            filename = s.substring(lastSeparatorIndex + 1);
+        }
+    
+        // Remove the extension.
+        final int extensionIndex = filename.lastIndexOf(".");
+        if (extensionIndex == -1) {
+            return s;
+        }
+    
+        return s.substring(0, lastSeparatorIndex + 1) + filename.substring(0, extensionIndex);
+    }
+
 }
