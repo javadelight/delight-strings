@@ -8,6 +8,9 @@ import java.io.UnsupportedEncodingException;
 public class ConvertToString {
 
     public static String inputStream(final InputStream is) {
+        if (is == null) {
+            throw new IllegalArgumentException("Input stream must not be null.");
+        }
         try {
             return new String(read(is), "UTF-8");
         } catch (final UnsupportedEncodingException e) {
