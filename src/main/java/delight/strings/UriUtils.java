@@ -169,7 +169,7 @@ public class UriUtils {
             throw new IllegalArgumentException("Path does not have elements: " + path);
         }
 
-        return null;
+        return path.substring(0, lastIdx - 1);
     }
 
 }
