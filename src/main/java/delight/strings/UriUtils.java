@@ -127,9 +127,9 @@ public class UriUtils {
     public static String removeExtension(final String s) {
         final String works = s + "";
         final String separator = "/"; // System.getProperty("file.separator");
-    
+
         final String filename;
-    
+
         // Remove the path up to the filename.
         final int lastSeparatorIndex = works.replaceAll("\\\\", "/").lastIndexOf(separator);
         if (lastSeparatorIndex == -1) {
@@ -137,13 +137,13 @@ public class UriUtils {
         } else {
             filename = s.substring(lastSeparatorIndex + 1);
         }
-    
+
         // Remove the extension.
         final int extensionIndex = filename.lastIndexOf(".");
         if (extensionIndex == -1) {
             return s;
         }
-    
+
         return s.substring(0, lastSeparatorIndex + 1) + filename.substring(0, extensionIndex);
     }
 
@@ -160,6 +160,16 @@ public class UriUtils {
             return path.substring(dotPos + 1);
         }
         return "";
+    }
+
+    public static String removeLastElement(final String path) {
+        final int lastIdx = path.lastIndexOf("/");
+
+        if (lastIdx == -1) {
+            throw new IllegalArgumentException("Path does not have elements: " + path);
+        }
+
+        return null;
     }
 
 }
