@@ -172,4 +172,12 @@ public class UriUtils {
         return path.substring(0, lastIdx);
     }
 
+    public static String assertNoSlash(final String ofString) {
+        if (!ofString.endsWith("/")) {
+            return ofString;
+        }
+    
+        return ofString.substring(0, ofString.length() - 1);
+    }
+
 }
