@@ -180,4 +180,12 @@ public class UriUtils {
         return ofString.substring(0, ofString.length() - 1);
     }
 
+    public static String assertSlash(final String ofString) {
+        if (ofString.endsWith("/")) {
+            return ofString;
+        }
+    
+        return ofString.concat("/");
+    }
+
 }
