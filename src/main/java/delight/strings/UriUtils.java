@@ -93,15 +93,15 @@ public class UriUtils {
 
     }
 
-    public static String getParentInPath(final String path) {
+    public static String getParent(final String pathorUri) {
 
-        final int lastSlash = path.lastIndexOf("/");
+        final int lastSlash = pathorUri.lastIndexOf("/");
 
         if (lastSlash == -1) {
             return "";
         }
 
-        return path.substring(0, lastSlash);
+        return pathorUri.substring(0, lastSlash);
 
     }
 
