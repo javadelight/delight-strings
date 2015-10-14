@@ -7,15 +7,19 @@ import java.io.UnsupportedEncodingException;
 
 public class ConvertToString {
 
-    public static String inputStream(final InputStream is) {
+    public static String inputStream(final InputStream is, final String encoding) {
         if (is == null) {
             throw new IllegalArgumentException("Input stream must not be null.");
         }
         try {
-            return new String(read(is), "UTF-8");
+            return new String(read(is), encoding);
         } catch (final UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String inputStream(final InputStream is) {
+        return inputStream(is, "UTF-8");
     }
 
     private static byte[] read(final InputStream inputStream) {
