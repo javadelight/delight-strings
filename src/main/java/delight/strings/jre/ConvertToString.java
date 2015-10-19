@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 public class ConvertToString {
 
@@ -29,6 +30,7 @@ public class ConvertToString {
         try {
             while ((length = inputStream.read(buffer)) != -1) {
                 baos.write(buffer, 0, length);
+                System.out.println("received " + Arrays.toString(buffer));
             }
         } catch (final IOException e) {
             throw new RuntimeException(e);
