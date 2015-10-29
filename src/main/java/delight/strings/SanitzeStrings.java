@@ -1,11 +1,10 @@
 package delight.strings;
 
-public class SanitzeStrings {
+public final class SanitzeStrings {
 
-    public static final char[] allowedCharacters = { 'a', 'b', 'c', 'd', 'e',
-    'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-    's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_', '-', '1', '2', '3',
-    '4', '5', '6', '7', '8', '9', '0' };
+    public static final char[] allowedCharacters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_', '-', '1', '2', '3', '4', '5', '6',
+            '7', '8', '9', '0' };
 
     /**
      * Returns true if the given character is a 'standard' character. (a-z,
@@ -17,8 +16,7 @@ public class SanitzeStrings {
     public static boolean isSimpleCharacter(final char character) {
         boolean found = false;
         for (final char element : allowedCharacters) {
-            found = found || character == element
-                    || character == Character.toUpperCase(element);
+            found = found || character == element || character == Character.toUpperCase(element);
         }
         return found;
     }
@@ -48,6 +46,23 @@ public class SanitzeStrings {
             return simple;
         } else {
             return n;
+        }
+    }
+
+    public static boolean isSimplePath(final String path) {
+        final String n = path;
+        if (n.length() > 0) {
+
+            for (int i = 0; i < n.length(); i++) {
+                final char c = n.charAt(i);
+                final boolean found = isSimpleCharacter(c) || c == '/' || c == '.';
+                if (!found) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return true;
         }
     }
 
