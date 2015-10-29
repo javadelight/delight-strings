@@ -105,6 +105,16 @@ public class UriUtils {
 
     }
 
+    public static boolean hasParent(final String pathorUri) {
+        final int lastSlash = pathorUri.lastIndexOf("/");
+
+        if (lastSlash == -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Retrives the last element of this path.
      * 
@@ -176,7 +186,7 @@ public class UriUtils {
         if (!ofString.endsWith("/")) {
             return ofString;
         }
-    
+
         return ofString.substring(0, ofString.length() - 1);
     }
 
@@ -184,7 +194,7 @@ public class UriUtils {
         if (ofString.endsWith("/")) {
             return ofString;
         }
-    
+
         return ofString.concat("/");
     }
 
