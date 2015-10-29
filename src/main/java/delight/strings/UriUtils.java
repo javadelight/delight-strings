@@ -108,7 +108,7 @@ public class UriUtils {
     public static boolean hasParent(final String pathorUri) {
         final int lastSlash = pathorUri.lastIndexOf("/");
 
-        if (lastSlash == -1) {
+        if (lastSlash != -1) {
             return true;
         } else {
             return false;
