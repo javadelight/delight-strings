@@ -55,7 +55,7 @@ public final class SanitzeStrings {
 
             for (int i = 0; i < n.length(); i++) {
                 final char c = n.charAt(i);
-                final boolean found = isSimpleCharacter(c) || c == '/' || c == '.';
+                final boolean found = isSimpleCharacter(c) || c == '/' || c == '.' || c == '*';
                 if (!found) {
                     return false;
                 }
