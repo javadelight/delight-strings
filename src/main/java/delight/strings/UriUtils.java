@@ -101,6 +101,18 @@ public class UriUtils {
             return "";
         }
 
+        if (pathorUri.startsWith("https://")) {
+            if (lastSlash <= "https://".length() - 1) {
+                return "";
+            }
+        }
+
+        if (pathorUri.startsWith("http://")) {
+            if (lastSlash <= "http://".length() - 1) {
+                return "";
+            }
+        }
+
         return pathorUri.substring(0, lastSlash);
 
     }
