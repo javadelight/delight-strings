@@ -108,6 +108,18 @@ public class UriUtils {
     public static boolean hasParent(final String pathorUri) {
         final int lastSlash = pathorUri.lastIndexOf("/");
 
+        if (pathorUri.startsWith("https://")) {
+            if (lastSlash <= "https://".length() - 1) {
+                return false;
+            }
+        }
+
+        if (pathorUri.startsWith("http://")) {
+            if (lastSlash <= "http://".length() - 1) {
+                return false;
+            }
+        }
+
         if (lastSlash != -1) {
             return true;
         } else {
