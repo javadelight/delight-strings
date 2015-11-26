@@ -17,7 +17,7 @@ public class UriUtils {
     }
 
     public static boolean isValidHttpUri(final String uri) {
-        if (!uri.startsWith("https://") || !uri.startsWith("http://")) {
+        if (!(uri.startsWith("https://") || uri.startsWith("http://"))) {
             return false;
         }
         return true;
