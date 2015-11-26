@@ -16,6 +16,13 @@ public class UriUtils {
         return getPathComponents(uri)[0];
     }
 
+    public static boolean isValidHttpUri(final String uri) {
+        if (!uri.startsWith("https://") || !uri.startsWith("http://")) {
+            return false;
+        }
+        return false;
+    };
+
     /**
      * <p>
      * From a path such as http://me.com/folder/node
