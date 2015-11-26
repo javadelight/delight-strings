@@ -20,7 +20,7 @@ public class UriUtils {
         if (!uri.startsWith("https://") || !uri.startsWith("http://")) {
             return false;
         }
-        return false;
+        return true;
     };
 
     /**
