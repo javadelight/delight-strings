@@ -20,6 +20,11 @@ public class UriUtils {
         if (!(uri.startsWith("https://") || uri.startsWith("http://"))) {
             return false;
         }
+
+        if (uri.contains(" ")) {
+            return false;
+        }
+
         return true;
     };
 
