@@ -48,6 +48,13 @@ public class RandomString {
         return new String(buf);
     }
 
+    public String nextStringWithoutNumbers() {
+        for (int idx = 0; idx < buf.length; ++idx) {
+            buf[idx] = symbols[random.nextInt(symbols.length - 10) + 10];
+        }
+        return new String(buf);
+    }
+
     public static String newRandomString() {
         return INSTANCE.nextString();
     }
