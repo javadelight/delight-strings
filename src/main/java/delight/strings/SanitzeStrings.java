@@ -49,6 +49,24 @@ public final class SanitzeStrings {
         }
     }
 
+    public static String getSimpleFileName(final String forName) {
+        final String n = forName;
+        if (n.length() > 0) {
+            String simple = "";
+            for (int i = 0; i < n.length(); i++) {
+                final boolean found = isSimpleCharacter(n.charAt(i)) || n.charAt(i) == '.';
+                if (found) {
+                    simple = simple + n.charAt(i);
+                } else {
+                    simple = simple + '_';
+                }
+            }
+            return simple;
+        } else {
+            return n;
+        }
+    }
+
     public static boolean isSimplePath(final String path) {
         final String n = path;
         if (n.length() > 0) {
