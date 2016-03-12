@@ -3,3 +3,5 @@
 # delight-strings
 
 Utilities to work with Strings.
+
+Part of the [Java Delight Suite](http://javadelight.org).
