@@ -267,15 +267,8 @@
 					<exclude>**/*.java</exclude>
 				</excludes>
 			</resource>
-
-
-
 		</resources>
-
-		
 	</build>
-
-	
 
 	<repositories>
 		<repository>
