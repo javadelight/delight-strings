@@ -23,7 +23,7 @@ Get domain from URI:
     String domain = UriUtils.getDomain("https://objecthub.io/docs");
     // domain = "objecthub.io"
 
-
+Get parent in URI:
 
 # Maven
 
