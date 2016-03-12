@@ -4,7 +4,6 @@
 	<version>0.0.3</version>
 	<description>Utilities for working with Strings.</description>
 	<url>https://github.com/javadelight/delight-strings</url>
-
 	<properties>
 		<module.gwtVersion>2.5.1</module.gwtVersion>
 		<module.importedPackages>
