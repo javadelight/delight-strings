@@ -15,8 +15,15 @@ Generate a random string:
 
 Remove special characters:
 
-    String san= SanitizeStrings.getSimpleName("hj&^aas", 5);
+    String san = SanitizeStrings.getSimpleName("hj&^aas", 5);
     // san = "hj__a"
+
+Get domain from URI:
+
+    String domain = UriUtils.getDomain("https://objecthub.io/docs");
+    // domain = "objecthub.io"
+
+
 
 # Maven
 
