@@ -25,6 +25,9 @@ Get domain from URI:
 
 Get parent in URI:
 
+    String parent = UriUtils.getParent("https://objecthub.io/users/u1");
+    // parent = "https://objecthub.io/users"
+
 # Maven
 
     <dependency>
