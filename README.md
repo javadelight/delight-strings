@@ -6,7 +6,14 @@ Utilities to work with Strings.
 
 Part of the [Java Delight Suite](http://javadelight.org).
 
-## Maven
+# Usage
+
+Generate a random string:
+
+    String rnd = new RandomString(5).nextString();
+    // rnd = "s4fWf" or similar
+
+# Maven
 
     <dependency>
         <groupId>org.javadelight</groupId>
@@ -18,7 +25,7 @@ Find out latest version [here](http://modules.appjangle.com/delight-strings/late
 
 Use [Java Delight Repository](https://github.com/javadelight/delight-main#maven-repository).
 
-## Further Documentation
+# Further Documentation
 
 - [JavaDocs](http://modules.appjangle.com/delight-strings/latest/apidocs/index.html)
 - [All Maven Reports](http://modules.appjangle.com/delight-strings/latest/project-reports.html)
