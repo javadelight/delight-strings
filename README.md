@@ -13,6 +13,11 @@ Generate a random string:
     String rnd = new RandomString(5).nextString();
     // rnd = "s4fWf" or similar
 
+Remove special characters:
+
+    String san= SanitizeStrings.getSimpleName("hj&^aas", 5);
+    // san = "hj__a"
+
 # Maven
 
     <dependency>
