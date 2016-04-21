@@ -22,6 +22,24 @@ public final class SanitzeStrings {
     }
 
     /**
+     * Returns true if all characters in input are ASCII characters.
+     * 
+     * @param input
+     * @return
+     */
+    public static boolean isASCII(final String input) {
+        boolean match = true;
+        for (int i = 0; i < input.length(); i++) {
+            final int c = input.charAt(i);
+            if (c > 0x7F) {
+                match = false;
+                break;
+            }
+        }
+        return match;
+    }
+
+    /**
      * Simplifies any given string and makes it conformant as file name for an
      * URI. Illegal characters are replaced by an '_'.<br/>
      * <br />
