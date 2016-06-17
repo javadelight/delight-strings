@@ -3,7 +3,7 @@ package delight.strings;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UriUtils {
+public final class UriUtils {
 
     /**
      * <p>
@@ -27,6 +27,21 @@ public class UriUtils {
 
         return true;
     };
+
+    public static String getPath(final String uri) {
+        final String[] components = getPathComponents(uri);
+
+        if (components.length == 1) {
+            return "/";
+        }
+
+        String res = "";
+
+        for (int i = 1; i < components.length; i++) {
+            res += "/" + components[i];
+        }
+        return res;
+    }
 
     /**
      * <p>
