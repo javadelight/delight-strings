@@ -22,7 +22,7 @@ public class ConvertToString {
         return inputStream(is, "UTF-8");
     }
 
-    private static byte[] read(final InputStream inputStream) {
+    public static byte[] read(final InputStream inputStream) {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         final byte[] buffer = new byte[1024];
         int length = 0;
