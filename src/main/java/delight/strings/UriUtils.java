@@ -28,6 +28,18 @@ public final class UriUtils {
         return true;
     };
 
+    public static final String removeQueryString(final String uri) {
+
+        final int index = uri.lastIndexOf("?");
+
+        if (index == -1) {
+            return uri;
+        }
+
+        return uri.substring(0, index);
+
+    }
+
     public static String getPath(final String uri) {
         final String[] components = getPathComponents(uri);
 
