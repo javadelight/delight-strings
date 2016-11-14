@@ -2,20 +2,30 @@ package delight.strings;
 
 public final class SanitizeStrings {
 
-    public static final char[] allowedCharacters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    public static final char[] URL_PATH_CHARACTERS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_', '-', '1', '2', '3', '4', '5', '6',
             '7', '8', '9', '0', '.', '+', '$' };
 
+    public static final char[] BASIC_CHARACTERS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_' };
+
     /**
-     * Returns true if the given character is a 'standard' character. (a-z,
-     * A-Z).
+     * Returns true if the given character is valid in an URL path portion
      * 
      * @param character
      * @return
      */
-    public static boolean isSimpleCharacter(final char character) {
+    public static final boolean isUrlPathCharacter(final char character) {
         boolean found = false;
-        for (final char element : allowedCharacters) {
+        for (final char element : URL_PATH_CHARACTERS) {
+            found = found || character == element || character == Character.toUpperCase(element);
+        }
+        return found;
+    }
+
+    public static final boolean isBasicCharacter(final char character) {
+        boolean found = false;
+        for (final char element : BASIC_CHARACTERS) {
             found = found || character == element || character == Character.toUpperCase(element);
         }
         return found;
@@ -40,21 +50,44 @@ public final class SanitizeStrings {
     }
 
     /**
-     * Simplifies any given string and makes it conformant as file name for an
-     * URI. Illegal characters are replaced by an '_'.<br/>
-     * <br />
-     * For legal characters, see {@link #allowedCharacters}:<br/>
-     * {@value #allowedCharacters}
+     * Only contains letters or underscore
      * 
-     * @param forName
      * @return
      */
-    public static String getSimpleName(final String forName) {
+    public final static String getBasicName(final String forName) {
         final String n = forName;
         if (n.length() > 0) {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
-                final boolean found = isSimpleCharacter(n.charAt(i));
+                final boolean found = isBasicCharacter(n.charAt(i));
+                if (found) {
+                    simple = simple + n.charAt(i);
+                } else {
+                    simple = simple + '_';
+                }
+            }
+            return simple;
+        } else {
+            return n;
+        }
+    }
+
+    /**
+     * Simplifies any given string and makes it conformant as file name for an
+     * URI. Illegal characters are replaced by an '_'.<br/>
+     * <br />
+     * For legal characters, see {@link #URL_PATH_CHARACTERS}:<br/>
+     * {@value #URL_PATH_CHARACTERS}
+     * 
+     * @param forName
+     * @return
+     */
+    public final static String getSimpleName(final String forName) {
+        final String n = forName;
+        if (n.length() > 0) {
+            String simple = "";
+            for (int i = 0; i < n.length(); i++) {
+                final boolean found = isUrlPathCharacter(n.charAt(i));
                 if (found) {
                     simple = simple + n.charAt(i);
                 } else {
@@ -73,7 +106,7 @@ public final class SanitizeStrings {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
                 final char c = n.charAt(i);
-                final boolean found = isSimpleCharacter(c) || c == '_' || c == '-' || c == '.' || c == '%' || c == '#'
+                final boolean found = isUrlPathCharacter(c) || c == '_' || c == '-' || c == '.' || c == '%' || c == '#'
                         || c == '$' || c == '!' || c == '+';
                 if (found) {
                     simple = simple + n.charAt(i);
@@ -92,7 +125,7 @@ public final class SanitizeStrings {
         if (n.length() > 0) {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
-                final boolean found = isSimpleCharacter(n.charAt(i)) || n.charAt(i) == '.';
+                final boolean found = isUrlPathCharacter(n.charAt(i)) || n.charAt(i) == '.';
                 if (found) {
                     simple = simple + n.charAt(i);
                 } else {
@@ -111,7 +144,7 @@ public final class SanitizeStrings {
 
             for (int i = 0; i < n.length(); i++) {
                 final char c = n.charAt(i);
-                final boolean found = isSimpleCharacter(c) || c == '/' || c == '.' || c == '*';
+                final boolean found = isUrlPathCharacter(c) || c == '/' || c == '.' || c == '*';
                 if (!found) {
                     return false;
                 }
@@ -128,6 +161,14 @@ public final class SanitizeStrings {
      */
     public static String getSimpleName(final String forName, final int maxCharacters) {
         final String name = getSimpleName(forName);
+        if (name.length() > maxCharacters) {
+            return name.substring(0, maxCharacters);
+        }
+        return name;
+    }
+
+    public final static String getBasicName(final String forName, final int maxCharacters) {
+        final String name = getBasicName(forName);
         if (name.length() > maxCharacters) {
             return name.substring(0, maxCharacters);
         }
