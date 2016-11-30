@@ -40,6 +40,16 @@ public final class UriUtils {
 
     }
 
+    public static final String getQueryString(final String uri) {
+        final int index = uri.lastIndexOf("?");
+
+        if (index == -1) {
+            return "";
+        }
+
+        return uri.substring(index + 1);
+    }
+
     public static String getPath(final String uri) {
         final String[] components = getPathComponents(uri);
 
