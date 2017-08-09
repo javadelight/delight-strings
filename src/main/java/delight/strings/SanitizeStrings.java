@@ -6,7 +6,7 @@ public final class SanitizeStrings {
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_', '-', '1', '2', '3', '4', '5', '6',
             '7', '8', '9', '0', '.', '+', '$' };
 
-    public static final char[] BASIC_CHARACTERS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    public static final char[] SIMPLE_CHARACTERS = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_', '-', '1', '2', '3', '4', '5', '6',
             '7', '8', '9', '0' };
 
@@ -24,9 +24,9 @@ public final class SanitizeStrings {
         return found;
     }
 
-    public static final boolean isBasicCharacter(final char character) {
+    public static final boolean isSimpleCharacter(final char character) {
         boolean found = false;
-        for (final char element : BASIC_CHARACTERS) {
+        for (final char element : SIMPLE_CHARACTERS) {
             found = found || character == element || character == Character.toUpperCase(element);
         }
         return found;
@@ -55,12 +55,12 @@ public final class SanitizeStrings {
      * 
      * @return
      */
-    public final static String getBasicName(final String forName) {
+    public final static String getSimpleName(final String forName) {
         final String n = forName;
         if (n.length() > 0) {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
-                final boolean found = isBasicCharacter(n.charAt(i));
+                final boolean found = isSimpleCharacter(n.charAt(i));
                 if (found) {
                     simple = simple + n.charAt(i);
                 } else {
@@ -72,7 +72,15 @@ public final class SanitizeStrings {
             return n;
         }
     }
-
+    
+    public final static String getSimpleName(final String forName, final int maxCharacters) {
+        final String name = getSimpleName(forName);
+        if (name.length() > maxCharacters) {
+            return name.substring(0, maxCharacters);
+        }
+        return name;
+    }
+    
     /**
      * Simplifies any given string and makes it conformant as file name for an
      * URI. Illegal characters are replaced by an '_'.<br/>
@@ -83,7 +91,7 @@ public final class SanitizeStrings {
      * @param forName
      * @return
      */
-    public final static String getSimpleName(final String forName) {
+    public final static String getUrlPathName(final String forName) {
         final String n = forName;
         if (n.length() > 0) {
             String simple = "";
@@ -107,7 +115,7 @@ public final class SanitizeStrings {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
                 final char c = n.charAt(i);
-                final boolean found = isUrlPathCharacter(c) || c == '_' || c == '-' || c == '.' || c == '%' || c == '#'
+                final boolean found = isSimpleCharacter(c) || c == '_' || c == '-' || c == '.' || c == '%' || c == '#'
                         || c == '$' || c == '!' || c == '+';
                 if (found) {
                     simple = simple + n.charAt(i);
@@ -126,7 +134,7 @@ public final class SanitizeStrings {
         if (n.length() > 0) {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
-                final boolean found = isUrlPathCharacter(n.charAt(i)) || n.charAt(i) == '.';
+                final boolean found = isSimpleCharacter(n.charAt(i)) || n.charAt(i) == '.';
                 if (found) {
                     simple = simple + n.charAt(i);
                 } else {
@@ -145,7 +153,7 @@ public final class SanitizeStrings {
 
             for (int i = 0; i < n.length(); i++) {
                 final char c = n.charAt(i);
-                final boolean found = isUrlPathCharacter(c) || c == '/' || c == '.' || c == '*';
+                final boolean found = isSimpleCharacter(c) || c == '/' || c == '.' || c == '*';
                 if (!found) {
                     return false;
                 }
@@ -160,20 +168,14 @@ public final class SanitizeStrings {
      * @see getSimpleName
      * 
      */
-    public static String getSimpleName(final String forName, final int maxCharacters) {
-        final String name = getSimpleName(forName);
+    public static String getUrlPathName(final String forName, final int maxCharacters) {
+        final String name = getUrlPathName(forName);
         if (name.length() > maxCharacters) {
             return name.substring(0, maxCharacters);
         }
         return name;
     }
 
-    public final static String getBasicName(final String forName, final int maxCharacters) {
-        final String name = getBasicName(forName);
-        if (name.length() > maxCharacters) {
-            return name.substring(0, maxCharacters);
-        }
-        return name;
-    }
+   
 
 }
