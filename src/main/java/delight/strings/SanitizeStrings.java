@@ -60,7 +60,7 @@ public final class SanitizeStrings {
         if (n.length() > 0) {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
-                final boolean found = isSimpleCharacter(n.charAt(i));
+                final boolean found = isUrlPathCharacter(n.charAt(i));
                 if (found) {
                     simple = simple + n.charAt(i);
                 } else {
@@ -115,7 +115,7 @@ public final class SanitizeStrings {
             String simple = "";
             for (int i = 0; i < n.length(); i++) {
                 final char c = n.charAt(i);
-                final boolean found = isSimpleCharacter(c) || c == '_' || c == '-' || c == '.' || c == '%' || c == '#'
+                final boolean found = isUrlPathCharacter(c) || c == '_' || c == '-' || c == '.' || c == '%' || c == '#'
                         || c == '$' || c == '!' || c == '+';
                 if (found) {
                     simple = simple + n.charAt(i);
