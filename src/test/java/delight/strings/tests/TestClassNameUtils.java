@@ -12,7 +12,7 @@ public class TestClassNameUtils {
 	@Test
 	public void testGetClassNameWithoutPackage() throws Exception {
 		
-		Assert.assertEquals("StringUtils", ClassNameUtils.getClassNameWithoutPackage(ClassNameUtils.class));
+		Assert.assertEquals("ClassNameUtils", ClassNameUtils.getClassNameWithoutPackage(ClassNameUtils.class));
 		
 	}
 	
