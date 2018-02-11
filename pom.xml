@@ -2,7 +2,7 @@
 	<groupId>org.javadelight</groupId>
 	<artifactId>delight-strings</artifactId>
 	<version>0.0.3</version>
-	<description>Utilities for working with Strings.</description>
+	<description>Utilities for working with strings.</description>
 	<url>https://github.com/javadelight/delight-strings</url>
 	<properties>
 		<module.gwtVersion>2.8.2</module.gwtVersion>
