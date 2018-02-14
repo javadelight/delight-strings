@@ -28,7 +28,7 @@ Get parent in URI:
     String parent = UriUtils.getParent("https://objecthub.io/users/u1");
     // parent = "https://objecthub.io/users"
 
-# Maven
+## Maven
 
     <dependency>
         <groupId>org.javadelight</groupId>
@@ -36,9 +36,10 @@ Get parent in URI:
         <version>0.0.3</version>
     </dependency>
     
-Find out latest version [here](http://modules.appjangle.com/delight-strings/latest/project-summary.html).
+This artifact is available on [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cdelight-strings) and 
+[BinTray](https://bintray.com/javadelight/javadelight/delight-strings).
 
-Use [Java Delight Repository](https://github.com/javadelight/delight-main#maven-repository).
+[![Maven Central](https://img.shields.io/maven-central/v/org.javadelight/delight-strings.svg)](https://search.maven.org/#search%7Cga%7C1%7Cdelight-strings)
 
 # Further Documentation
 
