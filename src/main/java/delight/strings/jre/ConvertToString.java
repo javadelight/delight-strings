@@ -29,8 +29,6 @@ public class ConvertToString {
         try {
             while ((length = inputStream.read(buffer)) != -1) {
                 baos.write(buffer, 0, length);
-                // System.out.println(length + " received " +
-                // Arrays.toString(buffer));
             }
         } catch (final IOException e) {
             throw new RuntimeException(e);
